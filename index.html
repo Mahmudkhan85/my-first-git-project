@@ -196,6 +196,52 @@
         .contact-form button:hover {
             background: #00aacc;
         }
+
+        footer {
+            background: #111;
+            color: #fff;
+            padding: 30px 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .social-icons a {
+            color: #00d9ff;
+            margin: 0 10px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: #00aacc;
+        }
+
+        #scrollToTopBtn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            padding: 10px 15px;
+            font-size: 20px;
+            border: none;
+            background: #00d9ff;
+            color: #fff;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: background 0.3s ease;
+        }
+
+        #scrollToTopBtn:hover {
+            background: #00aacc;
+        }
     </style>
 </head>
 
@@ -279,6 +325,17 @@
         </form>
     </section>
 
+    <footer>
+        <div class="footer-content">
+            <p>© 2025 Mahmud Khan. All rights reserved.</p>
+            <div class="social-icons">
+                <a href="https://github.com/mahmudkhan85" target="_blank">GitHub</a>
+                <a href="#">LinkedIn</a>
+                <a href="#">Twitter</a>
+            </div>
+        </div>
+        <button id="scrollToTopBtn" title="Go to top">⬆</button>
+    </footer>
 
     <!-- ✅ GSAP Animation -->
 
@@ -344,6 +401,20 @@
                 trigger: "#contact",
                 start: "top 80%"
             }
+        });
+        // Show button on scroll
+        window.addEventListener("scroll", function () {
+            const scrollBtn = document.getElementById("scrollToTopBtn");
+            if (window.scrollY > 200) {
+                scrollBtn.style.display = "block";
+            } else {
+                scrollBtn.style.display = "none";
+            }
+        });
+
+        // Scroll to top smooth
+        document.getElementById("scrollToTopBtn").addEventListener("click", function () {
+            window.scrollTo({ top: 0, behavior: "smooth" });
         });
 
 
