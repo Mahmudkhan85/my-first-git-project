@@ -158,6 +158,44 @@
             font-size: 14px;
             color: #666;
         }
+
+        #contact {
+            padding: 60px 20px;
+            background: #e9f7fc;
+            text-align: center;
+        }
+
+        .contact-form {
+            max-width: 500px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            font-size: 16px;
+            resize: none;
+        }
+
+        .contact-form button {
+            padding: 12px;
+            background: #00d9ff;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .contact-form button:hover {
+            background: #00aacc;
+        }
     </style>
 </head>
 
@@ -232,9 +270,15 @@
 
 
     <section id="contact">
-        <h2>Contact Me</h2>
-        <p>Coming soon...</p>
+        <h2 class="section-title">Contact Me</h2>
+        <form class="contact-form">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
     </section>
+
 
     <!-- ✅ GSAP Animation -->
 
@@ -281,6 +325,26 @@
             }
         });
 
+        gsap.from("#contact .section-title", {
+            opacity: 0,
+            y: 30,
+            duration: 1,
+            scrollTrigger: {
+                trigger: "#contact",
+                start: "top 80%"
+            }
+        });
+
+        gsap.from(".contact-form input, .contact-form textarea, .contact-form button", {
+            opacity: 0,
+            y: 50,
+            duration: 0.8,
+            stagger: 0.2,
+            scrollTrigger: {
+                trigger: "#contact",
+                start: "top 80%"
+            }
+        });
 
 
     </script>
