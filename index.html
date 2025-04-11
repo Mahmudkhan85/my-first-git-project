@@ -13,11 +13,37 @@
             scroll-behavior: smooth;
         }
 
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background: #0e0e0e;
-            color: #fff;
+
+
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #000000;
+            --accent-color: #00d9ff;
         }
+
+        body {
+            background: var(--bg-color);
+            color: var(--text-color);
+            transition: background 0.3s, color 0.3s;
+        }
+
+        body.dark {
+            --bg-color: #121212;
+            --text-color: #ffffff;
+        }
+
+        #theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
 
         /* Navbar Style */
         nav {
@@ -242,6 +268,17 @@
         #scrollToTopBtn:hover {
             background: #00aacc;
         }
+
+        @media (max-width: 768px) {
+            .projects-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .contact-form {
+                padding: 0 10px;
+            }
+        }
     </style>
 </head>
 
@@ -253,6 +290,8 @@
         <a href="#about">About</a>
         <a href="#projects">Projects</a>
         <a href="#contact">Contact</a>
+        <button id="theme-toggle">🌙</button>
+
     </nav>
 
     <!-- ✅ Home Section -->
@@ -415,6 +454,10 @@
         // Scroll to top smooth
         document.getElementById("scrollToTopBtn").addEventListener("click", function () {
             window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+        document.getElementById("theme-toggle").addEventListener("click", function () {
+            document.body.classList.toggle("dark");
+            this.textContent = document.body.classList.contains("dark") ? "☀️" : "🌙";
         });
 
 
